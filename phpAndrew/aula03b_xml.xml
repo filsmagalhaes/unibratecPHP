@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messeges>
+    <messege>
+        <to>Bill Gates</to>
+        <from>Larry Pages</from>
+        <body>Let's build software together.</body>  
+    </messege>
+    <messege>
+        <to>Larry Pages</to>
+        <from>Bill Gates</from>
+        <body>Let's do it</body>  
+    </messege>
+</messeges>  
+
+<!-- 
+EXEMPLO XML
+-->
+
+<!-- 
+AULA 03: Exercício
+sistema de pagamentos: fornecedores, clientes, categorias, produtos e pedidos.
+quais campos são essenciais para transportar?
+Montar estrutura xml e json! 
+-->

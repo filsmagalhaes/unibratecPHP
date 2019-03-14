@@ -1,0 +1,61 @@
+/*
+
+Aula 03: protocolos de comunicação
+Conjuntos de regras para auxiliar a comuniação com outro sistema;
+
+#Redes / Camadas / Protocolos
+
+Camadas: decomposição um sistema complexo em camadas para ficilitar a compreensão.
+OBS: POO camada de dados, camada de negócio, camada de classes basicas
+
+#ENCAPSULAMENTO
+
+empacotamento de cima para baixo até a camada fisica (ethernet, wifi...) e depois de baixo 
+para cima (aplicação).
+
+#TCP/IP 
+
+Protocolo aberto, altemente suportado, arquitetura independente das particularidades das redes, 
+endereçamento univwrsal (w.w.w), nomeação hierárquica, orientada para funcionalidades concretas.
+
+#SOA - arquitetura orientada a serviços.
+
+negócio x área de TI
+
+#HTTP
+
+#REST
+
+#XML e JSON
+
+Tecnologias para desenvolvimento e distribição de dados.
+
+XML: Facilidade de compartilhamento de informações por intermédio da internet.
+
+<message> 
+<from> "Anitta" </from>
+<to> "Bill" </to>
+<body> "Hello world" </body> 
+</message>
+
+JSON: é projetado para armazenar e trocar dados. (notação em javascript)
+
+{
+"message"{
+    "from":"Anitta",
+    "to":"Bill",
+    "body":"lest go"
+}
+}
+
+XML x JSON
+
+XML:tem que ser analisado pelo parser
+JSON:pode ser interpretado diretamento ao javascript
+
+XML:dificil de interpretação (posso inventar as tags)
+JSON:já é analisado em um objeto javascript pronto p uso (mais leve e fácil)
+
+*/
+
+
