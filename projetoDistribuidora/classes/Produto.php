@@ -47,6 +47,63 @@ class Produto {
     return $produto->fetch(PDO::FETCH_OBJ);
   }
 
+/**
+   * INSERT
+   * 
+   * @param array $dados
+   * @return int
+   */
+   public function inserir($dados)
+   {
+     $sql = 'INSERT INTO produto (id, nome, valor, descricao, categoria, quantidade_estoque , fk_cpf) ';
+     $sql .= 'VALUES (:id, :nome, :valor, :descricao, :categoria, :quantidade_estoque, :fk_cpf) ';
+     $produto = $this->connection->prepare($sql);
+     $produto->bindValue(':id', $dados['id'], PDO::PARAM_STR);
+     $produto->bindValue(':nome', $dados['nome'], PDO::PARAM_STR);
+     $produto->bindValue(':valor', $dados['valor'], PDO::PARAM_STR);
+     $produto->bindValue(':descricao', $dados['descricao'], PDO::PARAM_STR);
+     $produto->bindValue(':categoria', $dados['categoria'], PDO::PARAM_STR);
+     $produto->bindValue(':quantidade_estoque', $dados['quantidade_estoque'], PDO::PARAM_STR);
+     $produto->bindValue(':fk_cpf', $dados['fk_cpf'], PDO::PARAM_STR);
+     
+     $produto->execute();
+     return $this->connection->lastInsertId();
+   }
+
+/**
+   * Update
+   * 
+   * @param array $dados
+   * @return object
+   */
+   public function atualizar($dados)
+   {
+     $sql = 'UPDATE produto SET id = :id, nome = :nome, valor = :valor, descricao = :descricao, categoria = :categoria, quantidade_estoque = :quantidade_estoque, fk_cpf = :fk_cpf WHERE id = :id';
+     $produto = $this->connection->prepare($sql);
+     $produto->bindValue(':id', $dados['id'], PDO::PARAM_STR);
+     $produto->bindValue(':nome', $dados['nome'], PDO::PARAM_STR);
+     $produto->bindValue(':valor', $dados['valor'], PDO::PARAM_STR);
+     $produto->bindValue(':descricao', $dados['descricao'], PDO::PARAM_STR);
+     $produto->bindValue(':categoria', $dados['categoria'], PDO::PARAM_STR);
+     $produto->bindValue(':quantidade_estoque', $dados['quantidade_estoque'], PDO::PARAM_STR);
+     $produto->bindValue(':fk_cpf', $dados['fk_cpf'], PDO::PARAM_STR);
+     
+     return $produto->execute();
+   }
+
+   /**
+   * DELETE
+   * 
+   * @param int $id
+   * @return object
+   */
+  public function deletar($id)
+  {
+    $sql = 'DELETE FROM produto WHERE id = :id';
+    $produto = $this->connection->prepare($sql);
+    $produto->bindValue(':id', $id, PDO::PARAM_INT);
+    return $produto->execute();
+  }
 
 
 }
