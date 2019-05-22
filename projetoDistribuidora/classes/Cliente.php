@@ -64,7 +64,7 @@ class Cliente {
      $cliente->bindValue(':email', $dados['email'], PDO::PARAM_STR);
      
      $cliente->execute();
-     return $this->connection->lastInsertId();
+     return $this->connection->ultimoIdInserido();
    }
 
 /**

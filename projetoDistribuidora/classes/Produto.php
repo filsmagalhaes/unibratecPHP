@@ -55,8 +55,8 @@ class Produto {
    */
    public function inserir($dados)
    {
-     $sql = 'INSERT INTO produto (id, nome, valor, descricao, categoria, quantidade_estoque , fk_cpf) ';
-     $sql .= 'VALUES (:id, :nome, :valor, :descricao, :categoria, :quantidade_estoque, :fk_cpf) ';
+     $sql = 'INSERT INTO produto (id, nome, valor, descricao, categoria, quantidade_estoque , idVendedor) ';
+     $sql .= 'VALUES (:id, :nome, :valor, :descricao, :categoria, :quantidade_estoque, :idVendedor) ';
      $produto = $this->connection->prepare($sql);
      $produto->bindValue(':id', $dados['id'], PDO::PARAM_STR);
      $produto->bindValue(':nome', $dados['nome'], PDO::PARAM_STR);
@@ -64,10 +64,10 @@ class Produto {
      $produto->bindValue(':descricao', $dados['descricao'], PDO::PARAM_STR);
      $produto->bindValue(':categoria', $dados['categoria'], PDO::PARAM_STR);
      $produto->bindValue(':quantidade_estoque', $dados['quantidade_estoque'], PDO::PARAM_STR);
-     $produto->bindValue(':fk_cpf', $dados['fk_cpf'], PDO::PARAM_STR);
+     $produto->bindValue(':idVendedor', $dados['idVendedor'], PDO::PARAM_STR);
      
      $produto->execute();
-     return $this->connection->lastInsertId();
+     return $this->connection->ultimoIdInserido();
    }
 
 /**
@@ -78,7 +78,7 @@ class Produto {
    */
    public function atualizar($dados)
    {
-     $sql = 'UPDATE produto SET id = :id, nome = :nome, valor = :valor, descricao = :descricao, categoria = :categoria, quantidade_estoque = :quantidade_estoque, fk_cpf = :fk_cpf WHERE id = :id';
+     $sql = 'UPDATE produto SET id = :id, nome = :nome, valor = :valor, descricao = :descricao, categoria = :categoria, quantidade_estoque = :quantidade_estoque, idVendedor = :idVendedor WHERE id = :id';
      $produto = $this->connection->prepare($sql);
      $produto->bindValue(':id', $dados['id'], PDO::PARAM_STR);
      $produto->bindValue(':nome', $dados['nome'], PDO::PARAM_STR);
@@ -86,7 +86,7 @@ class Produto {
      $produto->bindValue(':descricao', $dados['descricao'], PDO::PARAM_STR);
      $produto->bindValue(':categoria', $dados['categoria'], PDO::PARAM_STR);
      $produto->bindValue(':quantidade_estoque', $dados['quantidade_estoque'], PDO::PARAM_STR);
-     $produto->bindValue(':fk_cpf', $dados['fk_cpf'], PDO::PARAM_STR);
+     $produto->bindValue(':idVendedor', $dados['idVendedor'], PDO::PARAM_STR);
      
      return $produto->execute();
    }

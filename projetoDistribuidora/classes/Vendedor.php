@@ -65,7 +65,7 @@ class Vendedor {
      $vendedor->bindValue(':email', $dados['email'], PDO::PARAM_STR);
      
      $vendedor->execute();
-     return $this->connection->lastInsertId();
+     return $this->connection->ultimoIdInserido();
    }
 
 /**

@@ -57,17 +57,17 @@ class Pedido {
    */
    public function inserir($dados)
    {
-     $sql = 'INSERT INTO pedido (id, quantidade, forma_pagamento, fk_cnpj, fk_id) ';
-     $sql .= 'VALUES (:id, :quantidade, :forma_pagamento, :fk_cnpj, :fk_id) ';
+     $sql = 'INSERT INTO pedido (id, quantidade, forma_pagamento, idCliente, idProduto) ';
+     $sql .= 'VALUES (:id, :quantidade, :forma_pagamento, :idCliente, :idProduto) ';
      $pedido = $this->connection->prepare($sql);
      $pedido->bindValue(':id', $dados['id'], PDO::PARAM_STR);
      $pedido->bindValue(':quantidade', $dados['quantidade'], PDO::PARAM_STR);
      $pedido->bindValue(':forma_pagamento', $dados['forma_pagamento'], PDO::PARAM_STR);
-     $pedido->bindValue(':fk_cnpj', $dados['fk_cnpj'], PDO::PARAM_STR);
-     $pedido->bindValue(':fk_id', $dados['fk_id'], PDO::PARAM_STR);
+     $pedido->bindValue(':idCliente', $dados['idCliente'], PDO::PARAM_STR);
+     $pedido->bindValue(':idProduto', $dados['idProduto'], PDO::PARAM_STR);
          
      $pedido->execute();
-     return $this->connection->lastInsertId();
+     return $this->connection->ultimoIdInserido();
    }
 
 /**
@@ -78,13 +78,13 @@ class Pedido {
    */
    public function atualizar($dados)
    {
-     $sql = 'UPDATE pedido SET id = :id, quantidade = :quantidade, forma_pagamento = :forma_pagamento, fk_cnpj = :fk_cnpj, fk_id = :fk_id WHERE id = :id';
+     $sql = 'UPDATE pedido SET id = :id, quantidade = :quantidade, forma_pagamento = :forma_pagamento, idCliente = :idCliente, idProduto = :idProduto WHERE id = :id';
      $pedido = $this->connection->prepare($sql);
      $pedido->bindValue(':id', $dados['id'], PDO::PARAM_STR);
      $pedido->bindValue(':quantidade', $dados['quantidade'], PDO::PARAM_STR);
      $pedido->bindValue(':forma_pagamento', $dados['forma_pagamento'], PDO::PARAM_STR);
-     $pedido->bindValue(':fk_cnpj', $dados['fk_cnpj'], PDO::PARAM_STR);
-     $pedido->bindValue(':fk_id', $dados['fk_id'], PDO::PARAM_STR);
+     $pedido->bindValue(':idCliente', $dados['idCliente'], PDO::PARAM_STR);
+     $pedido->bindValue(':idProduto', $dados['idProduto'], PDO::PARAM_STR);
      
      return $pedido->execute();
    }
